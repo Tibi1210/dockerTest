@@ -10,7 +10,7 @@ terraform {
 resource "docker_image" "node_app" {
   name = "nodejs-sample-app:latest"
   build {
-    context    = "."
+    context    = "/var/jenkins_home/workspace/asd"
     dockerfile = "Dockerfile_deploy-env"
     tag        = ["nodejs-sample-app:latest"]
   }
