@@ -11,7 +11,7 @@ resource "docker_image" "node_app" {
   name = "nodejs-sample-app"
   build {
     context    = "."
-    dockerfile = "Dockerfile_deploy-env"
+    dockerfile = "Dockerfile"
     tag        = ["nodejs-sample-app:latest"]
   }
 }
