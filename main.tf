@@ -7,24 +7,8 @@ terraform {
   }
 }
 
-resource "docker_image" "node_app" {
-  name = "nodejs-sample-app:latest"
-  build {
-    context    = "."
-    dockerfile = "Dockerfile_deploy-env"
-    tag        = ["nodejs-sample-app:latest"]
-  }
+provider "docker" {}
+
+resource "docker_image" "node" {
+  name = "node:14"
 }
-
-resource "docker_container" "node_app" {
-  name  = "nodejs-sample-app"
-  image = docker_image.node_app.image_id
-
-  ports {
-    internal = 3000
-    external = 3000
-  }
-
-  restart = "unless-stopped"
-}
-
