@@ -7,11 +7,11 @@ terraform {
   }
 }
 
-resource "docker_image" "node_app" {
-  name = "nodejs-sample-app"
+resource "docker_image" "python" {
+  name = "python"
   build {
     context    = "."
-    dockerfile = "Dockerfile"
-    tag        = ["nodejs-sample-app:latest"]
+    dockerfile = "Dockerfile_py"
+    tag        = ["python:latest"]
   }
 }
