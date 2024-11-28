@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY test.py .
 
-EXPOSE 2000
-
 CMD python test.py
 
 # docker build -t nodejs-sample-app -f Dockerfile .

@@ -2,16 +2,13 @@ terraform {
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
-      version = "~> 3.0.2"
+      version = "~> 3.0.0"
     }
   }
 }
 
-resource "docker_image" "python" {
-  name = "python"
-  build {
-    context    = "."
-    dockerfile = "Dockerfile_py"
-    tag        = ["python:latest"]
-  }
+provider "docker" {}
+
+resource "docker_image" "node" {
+  name = "localhost:5000/angular-env"
 }
