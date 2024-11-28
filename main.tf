@@ -10,5 +10,5 @@ terraform {
 provider "docker" {}
 
 resource "docker_image" "node" {
-  name = "localhost:5000/angular-env"
+  name = "localhost:5000/nodejs-sample-app"
 }
