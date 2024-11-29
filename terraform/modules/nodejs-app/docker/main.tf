@@ -38,13 +38,12 @@ resource "docker_container" "nodeCont" {
 
   dynamic "healthcheck" {
     for_each = var.healthcheck.enabled ? [1] : []
-    content{
+    content {
       test = var.healthcheck.test
       interval = var.healthcheck.interval
       timeout = var.healthcheck.timeout
       retries = var.healthcheck.retries
       start_period = var.healthcheck.start_period
-
     }
   }
 

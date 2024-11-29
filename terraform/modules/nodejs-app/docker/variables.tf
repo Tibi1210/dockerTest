@@ -22,14 +22,14 @@ variable "memory_limit" {
 }
 
 variable "healthcheck" {
-  description = "HealthCheck settings"
+  description = "Healthcheck settings"
   type = object({
     enabled = bool
     test = list(string)
     interval = string
     timeout = string
     retries = number
-    start = string
+    start_period = string
   })
   default = {
     enabled = true
@@ -37,6 +37,6 @@ variable "healthcheck" {
     interval = "30s"
     timeout = "10s"
     retries = 3
-    start_period = "10s"
+    start_period = "40s"
   }
 }
