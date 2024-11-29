@@ -12,6 +12,7 @@ RUN npm run build
 # Production stage
 FROM node:20-alpine
 RUN npm install -g pm2
+RUN apk add curl
 WORKDIR /app
 COPY --from=builder /app/nodejs-sample-app-for-devops/dist ./dist
 COPY --from=builder /app/nodejs-sample-app-for-devops/package*.json ./

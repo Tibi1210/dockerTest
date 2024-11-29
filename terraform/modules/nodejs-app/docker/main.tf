@@ -34,5 +34,19 @@ resource "docker_container" "nodeCont" {
     external = var.app_port + count.index
   }
 
+  memory = var.memory_limit
+
+  dynamic "healthcheck" {
+    for_each = var.healthcheck.enabled ? [1] : []
+    content{
+      test = var.healthcheck.test
+      interval = var.healthcheck.interval
+      timeout = var.healthcheck.timeout
+      retries = var.healthcheck.retries
+      start = var.healthcheck.start
+
+    }
+  }
+
   restart = "unless-stopped"
 }

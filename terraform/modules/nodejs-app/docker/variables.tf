@@ -14,3 +14,29 @@ variable "app_port" {
     type = number
     default = 3000
 }
+
+variable "memory_limit" {
+    description = "Application max usable memory."
+    type = number
+    default = 256
+}
+
+variable "healthcheck" {
+  description = "HealthCheck settings"
+  type = object({
+    enabled = bool
+    test = list(string)
+    interval = string
+    timeout = string
+    retries = number
+    start = string
+  })
+  default = {
+    enabled = true
+    test = ["CMD", "curl", "-f", "http://localhost:3000/add?num1=10&num2=20"]
+    interval = "30s"
+    timeout = "10s"
+    retries = 3
+    start = "10s"
+  }
+}
