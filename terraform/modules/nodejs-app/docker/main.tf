@@ -43,7 +43,7 @@ resource "docker_container" "nodeCont" {
       interval = var.healthcheck.interval
       timeout = var.healthcheck.timeout
       retries = var.healthcheck.retries
-      start = var.healthcheck.start
+      start_period = var.healthcheck.start_period
 
     }
   }

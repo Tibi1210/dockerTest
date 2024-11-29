@@ -37,6 +37,6 @@ variable "healthcheck" {
     interval = "30s"
     timeout = "10s"
     retries = 3
-    start = "10s"
+    start_period = "10s"
   }
 }
