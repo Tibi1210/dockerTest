@@ -13,7 +13,7 @@
 - Registry: ```docker run -it -p 5000:5000 registry:2```
 - Push image to registry: ```docker push localhost:5000/nodejs-sample-app:latest```
 
-_A terraformmal való buildelés hibára vezetett konstans, de a terraform fileban ottvan hogy kellene._
+_A terraformmal való buildelés hibára vezetett konstans, de a terraform fileban ottvan hogy kellene... <strong>Error msg: failed to read downloaded context: failed to load cache key: invalid response status 403</strong>_
 
 ## Pipeline
 - Pipeline script from SCM: 
