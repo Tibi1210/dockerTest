@@ -21,7 +21,6 @@ pipeline{
             steps {
                 git branch: env.BRANCH, url: env.GITHUB_REPO
                 sh 'ls -l'
-                sh 'echo "$PWD"'
             }
         }
 
