@@ -9,6 +9,16 @@ terraform {
 
 provider "docker" {}
 
+resource "docker_image" "test" {
+  name = "build-test"
+  build{
+    context = "."
+    dockerfile = "Dockerfile_node"
+    tag = ["build-test:latest"]
+    no_cache = true
+  }
+}
+
 resource "docker_image" "nodeImg" {
   name = "localhost:5000/nodejs-sample-app"
 }

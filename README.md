@@ -8,7 +8,14 @@
 
 
 ## App build
-- App image: ```docker build -t nodejs-sample-app -f Dockerfile .```
+- App image: ```docker build -t nodejs-sample-app -f Dockerfile_node .```
 - Tag image: ```docker tag nodejs-sample-app:latest localhost:5000/nodejs-sample-app:latest```
 - Registry: ```docker run -it -p 5000:5000 registry:2```
 - Push image to registry: ```docker push localhost:5000/nodejs-sample-app:latest```
+
+_A terraformmal való buildelés hibára vezetett konstans, de a terraform fileban ottvan hogy kellene._
+
+## Pipeline
+- Pipeline script from SCM: 
+    - url: https://github.com/Tibi1210/dockerTest.git
+    - branch: */main
