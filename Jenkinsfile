@@ -23,29 +23,33 @@ pipeline{
                 sh 'ls -l'
             }
         }
-        stage('TERRAFORM FOLDER'){
+
+        stage('TERRAFORM INIT'){
             steps{
-                sh 'cd terraform'
+                dir('terraform') {
+                    sh 'terraform init'
+                }
             }
         }
         stage('TERRAFORM DESTROY'){
             steps{
-                sh 'terraform destroy -auto-approve'
-            }
-        }
-        stage('TERRAFORM INIT'){
-            steps{
-                sh 'terraform init'
+                dir('terraform') {
+                    sh 'terraform destroy -auto-approve'
+                }
             }
         }
         stage('TERRAFORM PLAN'){
             steps{
-                sh 'terraform plan'
+                dir('terraform') {
+                    sh 'terraform plan'
+                }
             }
         }
         stage('TERRAFORM APPLY'){
             steps{
-                sh 'terraform apply -auto-approve'
+                dir('terraform') {
+                    sh 'terraform apply -auto-approve'
+                }
             }
         }
     }
