@@ -19,6 +19,4 @@ RUN npm ci --only=production && npm cache clean --force
 EXPOSE 3000
 CMD ["pm2-runtime", "start", "dist/index.js"]
 
-# docker build -t nodejs-sample-app -f Dockerfile .
-# docker run -it --rm -p 3000:3000 nodejs-sample-app
 # http://localhost:3000/add?num1=10&num2=20
