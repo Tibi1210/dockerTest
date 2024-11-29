@@ -12,7 +12,7 @@ provider "docker" {}
 resource "docker_image" "test" {
   name = "build-test"
   build{
-    context = "/var/jenkins_home/workspace/DevOpsProject/"
+    context = "/var/jenkins_home/workspace/DevOpsProject"
     dockerfile = "Dockerfile_node"
     tag = ["build-test:latest"]
     no_cache = true
