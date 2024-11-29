@@ -9,4 +9,7 @@ terraform {
 
 module "nodejs-app"{
   source = "./modules/nodejs-app/docker"
+
+  app_port = var.app_port
+  container_name = "nodejs-sample-app"
 }

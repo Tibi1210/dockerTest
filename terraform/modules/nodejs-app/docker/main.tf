@@ -25,12 +25,13 @@ resource "docker_image" "nodeImg" {
 }
 
 resource "docker_container" "nodeCont" {
-  name  = "nodejs-sample-app"
+  count = var.container_count
+  name  = "${var.container_name}-${count.index+1}"
   image = docker_image.nodeImg.image_id
 
   ports {
-    internal = 3000
-    external = 3000
+    internal = var.app_port
+    external = var.app_port + count.index
   }
 
   restart = "unless-stopped"
