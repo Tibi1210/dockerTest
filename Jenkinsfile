@@ -23,6 +23,11 @@ pipeline{
                 sh 'ls -l'
             }
         }
+        stage('TERRAFORM FOLDER'){
+            steps{
+                sh 'cd terraform'
+            }
+        }
         stage('TERRAFORM DESTROY'){
             steps{
                 sh 'terraform destroy -auto-approve'
