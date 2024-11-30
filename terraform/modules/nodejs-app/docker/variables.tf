@@ -54,8 +54,8 @@ variable "healthcheck" {
 }
 
 # Új változó a hálózathoz
-# variable "network" {
-#   description = "Docker hálózat neve"
-#   type        = string
-#   default     = "nodejs-sample-network"
-# }
+variable "network" {
+  description = "Docker hálózat neve"
+  type        = string
+  default     = "nodejs-sample-network"
+}
