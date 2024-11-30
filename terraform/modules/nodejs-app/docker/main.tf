@@ -60,6 +60,6 @@ resource "docker_container" "node_app" {
 }
 
 # Output a container_name használatához
- output "container_name" {
-   value = var.container_name
- }
+output "container_name" {
+  value = var.container_name
+}
