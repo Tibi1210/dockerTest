@@ -29,9 +29,9 @@ module "nodejs_app" {
   
   app_port = var.app_port
   container_name = "${var.project_name}-nodejs"
-  network = docker_network.monitoring_network.name
+  #network = docker_network.monitoring_network.name
 
-  depends_on = [docker_network.monitoring_network]
+  #depends_on = [docker_network.monitoring_network]
 }
 
 # Prometheus modul
