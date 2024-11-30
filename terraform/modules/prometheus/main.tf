@@ -8,6 +8,14 @@ terraform {
   }
 }
 
+#resource "docker_image" "prometheus" {
+#  name = "custom-prometheus:latest"
+#  build {
+#    context = "."
+#    dockerfile = "Dockerfile_prometheus"
+#    no_cache = true
+#  }
+#}
 resource "docker_image" "prometheus" {
   name = "localhost:5000/prometheus:latest"
 }

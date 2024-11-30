@@ -1,3 +1,4 @@
+# modules/nodejs-app/docker/main.tf
 terraform {
   required_providers {
     docker = {
@@ -7,53 +8,56 @@ terraform {
   }
 }
 
-provider "docker" {}
+#resource "docker_image" "node_app" {
+#  name = "node-sample-app:latest"
+#  build {
+#    context    = "."
+#    dockerfile = "Dockerfile_deploy-env"
+#    tag        = ["node-sample-app:latest"]
+#    no_cache   = true
+#  }
+#}
 
-# resource "docker_image" "test" {
-#   name = "build-test"
-#   build{
-#     context = "/var/jenkins_home/workspace/DevOpsProject"
-#     dockerfile = "Dockerfile_node"
-#     tag = ["build-test:latest"]
-#     no_cache = true
-#   }
-# }
-# Error msg: failed to read downloaded context: failed to load cache key: invalid response status 403
-
-resource "docker_image" "nodeImg" {
+resource "docker_image" "node_app" {
   name = "localhost:5000/nodejs-sample-app"
 }
 
-resource "docker_container" "nodeCont" {
+resource "docker_container" "node_app" {
   count = var.container_count
-  name  = "${var.container_name}-${count.index+1}"
-  image = docker_image.nodeImg.image_id
+  name  = "${var.container_name}-${count.index + 1}"
+  hostname = "${var.container_name}-${count.index + 1}"
+  image = docker_image.node_app.image_id
 
+  # Memória limit
+  memory = var.memory_limit
+  
+  # Újraindítási szabály
+  restart = var.restart_policy
+  
+  # Port mapping - minden konténer más külső portot kap
   ports {
     internal = var.app_port
     external = var.app_port + count.index
   }
-
-    networks_advanced {
+  
+  # Hálózat csatlakozás
+  networks_advanced {
     name = var.network
     aliases = ["${var.container_name}-${count.index + 1}"]
     ipv4_address = "172.18.0.${20 + count.index}"
   }
-
-  memory = var.memory_limit
-
+  
+  # Egészség ellenőrzés
   dynamic "healthcheck" {
     for_each = var.healthcheck.enabled ? [1] : []
     content {
-      test = var.healthcheck.test
-      interval = var.healthcheck.interval
-      timeout = var.healthcheck.timeout
-      retries = var.healthcheck.retries
+      test         = var.healthcheck.test
+      interval     = var.healthcheck.interval
+      timeout      = var.healthcheck.timeout
+      retries      = var.healthcheck.retries
       start_period = var.healthcheck.start_period
     }
   }
-
-  restart = "unless-stopped"
 }
 
 # Output a container_name használatához

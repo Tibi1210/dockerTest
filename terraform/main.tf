@@ -1,3 +1,4 @@
+# main.tf
 terraform {
   required_providers {
     docker = {
@@ -5,6 +6,10 @@ terraform {
       version = "~> 3.0.0"
     }
   }
+}
+
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
 }
 
 # Közös hálózat létrehozása
@@ -17,10 +22,6 @@ resource "docker_network" "monitoring_network" {
     gateway = "172.18.0.1"
   }
   internal = false
-}
-
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
 }
 
 # NodeJS alkalmazás modul
