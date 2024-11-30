@@ -40,3 +40,10 @@ variable "healthcheck" {
     start_period = "40s"
   }
 }
+
+# Új változó a hálózathoz
+variable "network" {
+  description = "Docker hálózat neve"
+  type        = string
+  default     = "nodejs-sample-network"
+}

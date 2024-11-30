@@ -34,6 +34,12 @@ resource "docker_container" "nodeCont" {
     external = var.app_port + count.index
   }
 
+    networks_advanced {
+    name = var.network
+    aliases = ["${var.container_name}-${count.index + 1}"]
+    ipv4_address = "172.18.0.${20 + count.index}"
+  }
+
   memory = var.memory_limit
 
   dynamic "healthcheck" {
@@ -48,4 +54,9 @@ resource "docker_container" "nodeCont" {
   }
 
   restart = "unless-stopped"
+}
+
+# Output a container_name használatához
+output "container_name" {
+  value = var.container_name
 }
