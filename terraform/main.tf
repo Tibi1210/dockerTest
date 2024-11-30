@@ -19,6 +19,9 @@ resource "docker_network" "monitoring_network" {
   internal = false
 }
 
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
 
 # NodeJS alkalmazás modul
 module "nodejs_app" {
