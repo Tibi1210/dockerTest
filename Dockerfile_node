@@ -5,7 +5,7 @@ RUN apk add git
 WORKDIR /app
 RUN git clone https://github.com/jankiz/nodejs-sample-app-for-devops.git
 WORKDIR /app/nodejs-sample-app-for-devops
-RUN git checkout feature/http-server
+RUN git checkout feature/monitoring
 RUN npm ci
 RUN npm run build
 
