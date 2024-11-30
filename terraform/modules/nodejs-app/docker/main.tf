@@ -43,7 +43,7 @@ resource "docker_container" "node_app" {
   networks_advanced {
     name = var.network
     aliases = ["${var.container_name}-${count.index + 1}"]
-    ipv4_address = "172.18.0.${20 + count.index}"
+    ipv4_address = "172.50.0.${20 + count.index}"
   }
   
   # Egészség ellenőrzés

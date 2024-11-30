@@ -18,8 +18,8 @@ resource "docker_network" "monitoring_network" {
   driver = "bridge"
   # Enable IPv6 if needed
   ipam_config {
-    subnet = "172.18.0.0/16"  # Customize subnet as needed
-    gateway = "172.18.0.1"
+    subnet = "172.50.0.0/16"  # Customize subnet as needed
+    gateway = "172.50.0.1"
   }
   internal = false
 }
