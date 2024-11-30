@@ -40,11 +40,11 @@ resource "docker_container" "node_app" {
   }
   
   # Hálózat csatlakozás
-  networks_advanced {
-    name = var.network
-    aliases = ["${var.container_name}-${count.index + 1}"]
-    ipv4_address = "172.18.0.${20 + count.index}"
-  }
+  #networks_advanced {
+  #  name = var.network
+  #  aliases = ["${var.container_name}-${count.index + 1}"]
+  #  ipv4_address = "172.18.0.${20 + count.index}"
+  #}
   
   # Egészség ellenőrzés
   dynamic "healthcheck" {
@@ -60,6 +60,6 @@ resource "docker_container" "node_app" {
 }
 
 # Output a container_name használatához
-output "container_name" {
-  value = var.container_name
-}
+# output "container_name" {
+#   value = var.container_name
+# }
