@@ -57,5 +57,5 @@ variable "healthcheck" {
 variable "network" {
   description = "Docker hálózat neve"
   type        = string
-  default     = "nodejs-sample-network"
+  default     = "nodejs-sample-network-2"
 }
