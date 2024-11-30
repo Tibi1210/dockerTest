@@ -1,4 +1,3 @@
-# modules/nodejs-app/docker/variables.tf
 variable "container_name" {
   description = "A Docker konténer neve"
   type        = string

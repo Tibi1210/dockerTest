@@ -1,4 +1,3 @@
-# modules/nodejs-app/docker/main.tf
 terraform {
   required_providers {
     docker = {
