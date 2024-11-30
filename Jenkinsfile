@@ -31,13 +31,6 @@ pipeline{
                 }
             }
         }
-        stage('TERRAFORM DESTROY'){
-            steps{
-                dir('terraform') {
-                    sh 'terraform destroy -auto-approve'
-                }
-            }
-        }
         stage('TERRAFORM PLAN'){
             steps{
                 dir('terraform') {
