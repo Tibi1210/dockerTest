@@ -1,18 +1,12 @@
 # variables.tf
 variable "project_name" {
-  description = "A projekt neve, ami az erőforrások elnevezésében is megjelenik"
-  type        = string
-  default     = "nodejs-sample"
-}
-
-variable "environment" {
-  description = "Környezet neve (dev, staging, prod)"
-  type        = string
-  default     = "dev"
+  description = "Project name foe the apps"
+  type = string
+  default = "nodejs-sample"
 }
 
 variable "app_port" {
-  description = "Az alkalmazás portja"
-  type        = number
-  default     = 3000
+  description = "Node app port"
+  type = number
+  default = 3000
 }

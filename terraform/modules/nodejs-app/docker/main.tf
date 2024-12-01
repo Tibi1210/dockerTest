@@ -26,27 +26,20 @@ resource "docker_container" "node_app" {
   name  = "${var.container_name}-${count.index + 1}"
   hostname = "${var.container_name}-${count.index + 1}"
   image = docker_image.node_app.image_id
-
-  # Memória limit
   memory = var.memory_limit
-  
-  # Újraindítási szabály
   restart = var.restart_policy
-  
-  # Port mapping - minden konténer más külső portot kap
+
   ports {
     internal = var.app_port
     external = var.app_port + count.index
   }
-  
-  # Hálózat csatlakozás
+
   networks_advanced {
     name = var.network
     aliases = ["${var.container_name}-${count.index + 1}"]
     ipv4_address = "172.50.0.${20 + count.index}"
   }
-  
-  # Egészség ellenőrzés
+
   dynamic "healthcheck" {
     for_each = var.healthcheck.enabled ? [1] : []
     content {
@@ -59,7 +52,6 @@ resource "docker_container" "node_app" {
   }
 }
 
-# Output a container_name használatához
 output "container_name" {
   value = var.container_name
 }

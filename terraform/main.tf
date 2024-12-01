@@ -12,19 +12,16 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-# Közös hálózat létrehozása
 resource "docker_network" "monitoring_network" {
   name = "${var.project_name}-network"
   driver = "bridge"
-  # Enable IPv6 if needed
   ipam_config {
-    subnet = "172.50.0.0/16"  # Customize subnet as needed
+    subnet = "172.50.0.0/16"
     gateway = "172.50.0.1"
   }
   internal = false
 }
 
-# NodeJS alkalmazás modul
 module "nodejs_app" {
   source = "./modules/nodejs-app/docker"
   
@@ -35,7 +32,6 @@ module "nodejs_app" {
   depends_on = [docker_network.monitoring_network]
 }
 
-# Prometheus modul
 module "prometheus" {
   source = "./modules/prometheus"
   

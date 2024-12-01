@@ -1,4 +1,3 @@
 # terraform.tfvars
 project_name = "nodejs-sample"
-environment  = "dev"
-app_port     = 3000
+app_port = 3000

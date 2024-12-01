@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     docker = {
-      source  = "kreuzwerker/docker"
+      source = "kreuzwerker/docker"
       version = "~> 3.0.0"
     }
   }
@@ -15,16 +15,17 @@ terraform {
 #    no_cache = true
 #  }
 #}
+
 resource "docker_image" "prometheus" {
   name = "localhost:5000/prometheus:latest"
 }
 
 resource "docker_container" "prometheus" {
-  name  = "prometheus"
+  name = "prometheus"
   image = docker_image.prometheus.image_id
 
   ports {
-    ip       = "0.0.0.0"
+    ip = "0.0.0.0"
     internal = 9090
     external = 9090
   }
