@@ -14,7 +14,7 @@ pipeline{
         }
         stage('CD to Build pipeline'){
             steps{
-                dir("/var/jenkins_home/workspace/PrometheusIntegration/terraform"){
+                dir("/var/jenkins_home/workspace/ReleaseDeploy/terraform"){
                     sh "pwd"
                     sh 'ls -l'
                     sh 'terraform init'
