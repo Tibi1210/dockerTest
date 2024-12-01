@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('Terrform check'){
+            steps{
+                sh 'terraform --version'
+            }
+        }
+        stage('Docker check'){
+            steps{
+                sh 'docker --version'
+            }
+        }
+        stage('CD to Build pipeline'){
+            steps{
+                dir("/var/jenkins_home/workspace/PrometheusIntegration/terraform"){
+                    sh "pwd"
+                    sh 'ls -l'
+                    sh 'terraform init'
+                    sh 'terraform destroy -auto-approve' 
+                }
+            }
+        }
+
+
+    }
+}

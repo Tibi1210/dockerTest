@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('check net'){
+            steps{
+                sh 'docker network ls'
+            }
+        }
+        stage('del net'){
+            steps{
+                sh 'docker network rm nodejs-sample-network'
+            }
+        }
+
+    }
+}
