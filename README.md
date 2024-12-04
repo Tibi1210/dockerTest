@@ -24,7 +24,7 @@ Projektmunka: 1 projekt teljeskörű CI/CD implementációja.
 - Registry: ```docker run -it -p 5000:5000 registry:2```
 
 ### App build
-- Image: ```docker build -t nodejs-sample-app -f Dockerfile_node .```
+- Image: ```docker build --no-cache -t nodejs-sample-app -f Dockerfile_node .```
 - Tag: ```docker tag nodejs-sample-app:latest localhost:5000/nodejs-sample-app:latest```
 - Push image to registry: ```docker push localhost:5000/nodejs-sample-app:latest```
 
