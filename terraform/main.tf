@@ -47,6 +47,15 @@ module "grafana" {
   prometheus_url = "http://prometheus:9090"
 }
 
+# Graylog modul
+module "graylog" {
+  source = "./modules/graylog"
+  
+  network = docker_network.monitoring_network.name
+  graylog_password_secret = var.graylog_password_secret
+  graylog_root_password_sha2 = var.graylog_root_password_sha2
+}
+
 output "network_info" {
   value = {
     network_id   = docker_network.monitoring_network.id

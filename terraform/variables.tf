@@ -10,3 +10,15 @@ variable "app_port" {
   type = number
   default = 3000
 }
+
+variable "graylog_password_secret" {
+  description = "Graylog password secret"
+  type        = string
+  sensitive   = true
+}
+
+variable "graylog_root_password_sha2" {
+  description = "Graylog root jelszó SHA-256 hash-e"
+  type        = string
+  sensitive   = true
+}
