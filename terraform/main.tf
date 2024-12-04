@@ -39,6 +39,14 @@ module "prometheus" {
   nodejs_app_name = module.nodejs_app.container_name
 }
 
+# Grafana modul
+module "grafana" {
+  source = "./modules/grafana"
+  
+  network = docker_network.monitoring_network.name
+  prometheus_url = "http://prometheus:9090"
+}
+
 output "network_info" {
   value = {
     network_id   = docker_network.monitoring_network.id
