@@ -45,7 +45,10 @@ _A terraformmal való buildelés hibára vezetett context: "." és context: "ful
       - Jenkinsfile_stop
 
 ## Működés:
-- A NodeTest pipeline figyeli a projekt repositoryt változásokért és amit egy commit érkezik lefuttatja a lint és teszt fázisokat
-- Ha a buildelés és tesztelés sikeresen megtörtént a ReleaseDeploy pipeline automatikusan elindul, az alkalmazás környezet felépül, az alkalmazs elindul, valamint a monitorozás is kezdetét veszi
-- Az alkalmazás elérhető a "localhost:300[0-4]/add?num1=10&num2=20" címeken, a prometheus felülete a "localhost:9090"-en
+- A NodeTest pipeline figyeli a projekt repositoryt változásokért és amint egy commit érkezik lefuttatja a lint és teszt fázisokat
+- Ha a buildelés és tesztelés sikeresen megtörtént a ReleaseDeploy pipeline automatikusan indul, a környezet felépül, az alkalmazás elindul, valamint a monitorozás is kezdetét veszi
+- Elérhetőségek: 
+  - Node alkalmazás: "localhost:300[0-4]" címek
+  - Prometheus: "localhost:9090"
+  - Grafana: "localhost:4000"
 

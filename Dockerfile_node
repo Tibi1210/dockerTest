@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 RUN apk update
 RUN apk add git
 WORKDIR /app
-RUN git clone https://github.com/jankiz/nodejs-sample-app-for-devops.git
+RUN git clone https://github.com/Tibi1210/NodeApp.git
 WORKDIR /app/nodejs-sample-app-for-devops
 RUN git checkout feature/monitoring
 RUN npm ci
@@ -13,6 +13,15 @@ RUN npm run build
 FROM node:20-alpine
 RUN npm install -g pm2
 RUN apk add curl
+
+# Install rsyslog
+RUN apk add --no-cache rsyslog
+# Create rsyslog config
+COPY rsyslog.conf /etc/rsyslog.conf
+RUN mkdir -p /var/log/pm2
+# Configure PM2 to use syslog
+ENV PM2_SYSLOG=true
+
 WORKDIR /app
 COPY --from=builder /app/nodejs-sample-app-for-devops/dist ./dist
 COPY --from=builder /app/nodejs-sample-app-for-devops/package*.json ./
