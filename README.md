@@ -51,4 +51,5 @@ _A terraformmal való buildelés hibára vezetett context: "." és context: "ful
   - Node alkalmazás: "localhost:300[0-4]" címek
   - Prometheus: "localhost:9090"
   - Grafana: "localhost:4000"
+  - Graylog: "localhost:9000"
 
