@@ -4,6 +4,7 @@
 
 Projektmunka: 1 projekt teljeskörű CI/CD implementációja.
   - Code (10 pont)
+    - Node demo app <a href="https://github.com/Tibi1210/NodeApp"> link</a>
   - Build & Test (15 pont)
     - Jenkins pipeline lint és teszt esetek futtatása
     - Terraform hiba miatt manuális buildelés + docker registry (de a terraform kód megvan ha működne automatán...)
@@ -11,7 +12,14 @@ Projektmunka: 1 projekt teljeskörű CI/CD implementációja.
     - Jenkins + Terraform docker, Jenkinsben pipeline a terraform műveletekhez (init, plan, apply, destroy)
   - Monitor & Feedback (10 pont)
     - Prometheus adatgyűjtés
+    - Grafana adatvizualizáció
+    - Graylog rendszer logging
   - Tool-ok: legalább 5 használata (Git, Docker nem számít)
+    - Jenkins
+    - Terraform
+    - Prometheus
+    - Grafana
+    - Graylog
   - Readme a projekthez (működésről)
 
 ## Előfeltételek:
